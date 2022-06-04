@@ -1,0 +1,22 @@
+months = dir('data');
+months = {months.name}';
+full_data = [];
+for month = 1:length(months)
+    if strcmp(months{month}, '.') || strcmp(months{month}, '..')
+        continue;
+    end
+    
+
+    days = dir(['data/', months{month}]);
+    days = {days.name}';
+    for day = 1:length(days)
+        if strcmp(days{day}, '.') || strcmp(days{day}, '..')
+            continue;
+        end
+        full_data.(months{month}).(days{day}) = [];
+        images = dir(['data/', months{month}, '/', days{day},]);
+        days = {days.name}';
+
+    end
+end
+

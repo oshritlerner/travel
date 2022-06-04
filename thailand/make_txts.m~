@@ -1,0 +1,15 @@
+months = dir('data');
+months = {months.name}';
+
+for month = 1:length(months)
+    if strcmp(months{month}, '.') || strcmp(months{month}, '..')
+        continue;
+    end
+    days = dir(['data/', months{month}])
+    for day = 1:length(days)
+        if strcmp(days{day}, '.') || strcmp(days{day}, '..')
+            continue;
+        end
+
+    [months{month}, '/' days{day}]
+end
