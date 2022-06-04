@@ -27,6 +27,15 @@
             $( document ).ready(function() {
                 menu();
                 main();
+				const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString).get('date');
+                if(urlParams){
+                    const date_arr = urlParams.split('-');
+                    console.log(date_arr);
+                    view(date_arr[0], date_arr[1], date_arr[2]);
+                    $("#"+date_arr[1]).toggle();
+                    $("#"+urlParams).css('color', 'red');
+                }
             });
         </script>
     </body>
