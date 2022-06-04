@@ -46,7 +46,7 @@ function menu()
 			menu_arr.push("</div>");
 			menu_arr.push("<div style='display:none;' id='"+pad((date.getMonth()+1), 2)+"'>");
 		}
-		menu_arr.push("<br><br><a href='javascript:void(0)' onclick='view("+link_date(date)+");'>"+formatted_date(date)+"</a>");
+		menu_arr.push("<br><br><a id='"+formatted_date(date)+"' href='?date="+formatted_date(date)+"' >"+formatted_date(date)+"</a>");
 		date.setDate(date.getDate() + 1);
 	}
 	menu_arr.push("</div>");
@@ -79,13 +79,13 @@ function view(day, month, year)
 
 				if (Date.parse(current_date)<Date.parse(last_date)){
 					next_date.setDate(current_date.getDate() + 1);
-					date_arr.push("<button onclick ='view("+link_date(next_date)+");' class='btn btn-info icon-white'></i> next</button>");
+					date_arr.push("<button onclick ='window.location.href=\"?date="+formatted_date(next_date)+"\"'; class='btn btn-info icon-white'></i> next</button>");
 				}
 
 
 				if (Date.parse(current_date)>Date.parse(start_date)){
 					prev_date.setDate(current_date.getDate()  -1);
-					date_arr.push("<button onclick ='view("+link_date(prev_date)+");' class='btn btn-info icon-white'></i> previous</button>");
+					date_arr.push("<button onclick ='window.location.href=\"?date="+formatted_date(prev_date)+"\"'; class='btn btn-info icon-white'></i> previous</button>");
 				}
 
 				date_arr.push("</div>");
